@@ -1,10 +1,28 @@
-# 🌾 Trang Trại Thông Minh – Smart Farm IoT
+<h2 align="center">
+    <a href="https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin">
+    🎓 Faculty of Information Technology (DaiNam University)
+    </a>
+</h2>
+<h2 align="center">
+   Hệ thống quản lý trang trại thông minh qua giọng nói
+</h2>
+<div align="center">
+    <p align="center">
+        <img src="https://github.com/user-attachments/assets/ee72b1c4-04c7-4e4b-8d7a-8cf16932804a" width="170" />
+        <img src="https://github.com/user-attachments/assets/1459f5bf-7fc9-4462-996d-eb1ef7633a97" width="180" />
+        <img src="https://github.com/user-attachments/assets/f081d02c-b644-4e87-a40c-fcb8383c2985" width="200" />
+    </p>
 
+[![AIoTLab](https://img.shields.io/badge/AIoTLab-green?style=for-the-badge)](https://www.facebook.com/DNUAIoTLab)
+[![Faculty of Information Technology](https://img.shields.io/badge/Faculty%20of%20Information%20Technology-blue?style=for-the-badge)](https://dainam.edu.vn/vi/khoa-cong-nghe-thong-tin)
+[![DaiNam University](https://img.shields.io/badge/DaiNam%20University-orange?style=for-the-badge)](https://dainam.edu.vn)
+
+</div>
 Hệ thống điều khiển trang trại thông minh sử dụng **ESP32 + Python Flask**, hỗ trợ điều khiển bằng **giọng nói tiếng Việt**, giao diện web dashboard và giám sát cảm biến thời gian thực.
 
 ---
 
-## 📁 Cấu Trúc Thư Mục
+## 1. Cấu Trúc Thư Mục
 
 ```
 smart-farm/
@@ -25,7 +43,7 @@ smart-farm/
 
 ---
 
-## 🧩 Kiến Trúc Hệ Thống
+## 2. Kiến Trúc Hệ Thống
 
 ```
 [Micro / Trình duyệt]
@@ -45,7 +63,7 @@ smart-farm/
 
 ---
 
-## ⚙️ Phần Cứng
+## 3. Phần Cứng
 
 | GPIO | Tên biến    | Chức năng            |
 |------|-------------|----------------------|
@@ -58,9 +76,9 @@ smart-farm/
 
 ---
 
-## 🚀 Cài Đặt & Chạy
+## 4. Cài Đặt & Chạy
 
-### 1. Flash Firmware ESP32
+### 4.1. Flash Firmware ESP32
 
 **Yêu cầu:** [PlatformIO](https://platformio.org/) (extension VS Code hoặc CLI)
 
@@ -77,7 +95,7 @@ Sau khi kết nối WiFi, mở **Serial Monitor** (115200 baud) để lấy đ�
 
 ---
 
-### 2. Cài Đặt Python Server
+### 4.2. Cài Đặt Python Server
 
 ```bash
 # Tạo và kích hoạt môi trường ảo
@@ -89,7 +107,7 @@ source .venv/bin/activate        # Linux/macOS
 pip install flask requests vosk sounddevice numpy edge-tts playsound
 ```
 
-#### Tải Vosk Model Tiếng Việt
+#### 4.Tải Vosk Model Tiếng Việt
 
 ```bash
 # Tải model nhỏ (~40MB) tại: https://alphacephei.com/vosk/models
@@ -98,7 +116,7 @@ unzip vosk-model-small-vn-0.4.zip
 mv vosk-model-small-vn-0.4 model
 ```
 
-#### Cấu Hình IP ESP32
+#### 4.Cấu Hình IP ESP32
 
 Mở `server.py`, sửa dòng:
 
@@ -116,7 +134,9 @@ Trình duyệt sẽ tự mở tại **http://localhost:5000**
 
 ---
 
-## 🎤 Lệnh Giọng Nói Hỗ Trợ
+
+## 5. Tính năng hệ thống
+#### 5.1. Lệnh Giọng Nói Hỗ Trợ
 
 Nhấn và **giữ nút "Giữ để nói lệnh"** trên dashboard, nói rõ một trong các lệnh sau:
 
@@ -141,7 +161,7 @@ Nhấn và **giữ nút "Giữ để nói lệnh"** trên dashboard, nói rõ m�
 
 ---
 
-## 🌐 API ESP32 (HTTP)
+#### 5.2. API ESP32 (HTTP)
 
 ESP32 khởi chạy WebServer trên cổng **80**, hỗ trợ các endpoint:
 
@@ -173,7 +193,7 @@ ESP32 khởi chạy WebServer trên cổng **80**, hỗ trợ các endpoint:
 
 ---
 
-## 🌡️ Cảnh Báo Tự Động
+#### 5.3. Cảnh Báo Tự Động
 
 Server tự động giám sát cảm biến và phát cảnh báo **TTS (Text-to-Speech)** khi:
 
@@ -184,7 +204,7 @@ Server tự động giám sát cảm biến và phát cảnh báo **TTS (Text-to
 
 ---
 
-## 🖥️ Dashboard Web
+#### 5.4. Dashboard Web
 
 Truy cập **http://localhost:5000** để:
 
@@ -194,9 +214,12 @@ Truy cập **http://localhost:5000** để:
 - Sử dụng micro trình duyệt (Web Speech API – cần Chrome/Edge)
 - Xem log hoạt động hệ thống
 
+### Giao diện hệ thống!
+![Home](Home.png)
+
 ---
 
-## 🔧 Công Nghệ Sử Dụng
+## 6. Công Nghệ Sử Dụng
 
 | Thành phần     | Công nghệ                              |
 |----------------|----------------------------------------|
@@ -210,7 +233,7 @@ Truy cập **http://localhost:5000** để:
 
 ---
 
-## 🐛 Xử Lý Lỗi Thường Gặp
+## 7. Xử Lý Lỗi Thường Gặp
 
 **ESP32 không kết nối WiFi:**
 - Kiểm tra `ssid` / `password` trong `main.cpp`
@@ -230,6 +253,6 @@ Truy cập **http://localhost:5000** để:
 
 ---
 
-## 📄 Giấy Phép
+## Giấy Phép
 
 Dự án học tập – tự do sử dụng và chỉnh sửa.
