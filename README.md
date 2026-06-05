@@ -63,22 +63,9 @@ smart-farm/
 
 ---
 
-## 3. Phần Cứng
+## 3. Cài Đặt & Chạy
 
-| GPIO | Tên biến    | Chức năng            |
-|------|-------------|----------------------|
-| 2    | LED_TUOI    | Máy bơm tưới / đèn vườn rau |
-| 4    | LED_DEN     | Đèn chuồng lợn       |
-| 5    | LED_QUAT    | Quạt thông gió chuồng|
-| 18   | LED_CUA     | Đèn / cửa nhà vệ sinh|
-
-> Kết nối relay hoặc MOSFET để điều khiển tải thực tế thay cho LED thử nghiệm.
-
----
-
-## 4. Cài Đặt & Chạy
-
-### 4.1. Flash Firmware ESP32
+### 3.1. Flash Firmware ESP32
 
 **Yêu cầu:** [PlatformIO](https://platformio.org/) (extension VS Code hoặc CLI)
 
@@ -95,7 +82,7 @@ Sau khi kết nối WiFi, mở **Serial Monitor** (115200 baud) để lấy đ�
 
 ---
 
-### 4.2. Cài Đặt Python Server
+### 3.2. Cài Đặt Python Server
 
 ```bash
 # Tạo và kích hoạt môi trường ảo
@@ -107,7 +94,7 @@ source .venv/bin/activate        # Linux/macOS
 pip install flask requests vosk sounddevice numpy edge-tts playsound
 ```
 
-#### 4.Tải Vosk Model Tiếng Việt
+#### 3.3.Tải Vosk Model Tiếng Việt
 
 ```bash
 # Tải model nhỏ (~40MB) tại: https://alphacephei.com/vosk/models
@@ -116,7 +103,7 @@ unzip vosk-model-small-vn-0.4.zip
 mv vosk-model-small-vn-0.4 model
 ```
 
-#### 4.Cấu Hình IP ESP32
+#### 3.4.Cấu Hình IP ESP32
 
 Mở `server.py`, sửa dòng:
 
@@ -124,7 +111,7 @@ Mở `server.py`, sửa dòng:
 ESP32_IP = "192.168.100.50"   # ← thay bằng IP thực của ESP32
 ```
 
-#### Khởi Chạy Server
+#### 3.5. Khởi Chạy Server
 
 ```bash
 python server.py
@@ -135,8 +122,8 @@ Trình duyệt sẽ tự mở tại **http://localhost:5000**
 ---
 
 
-## 5. Tính năng hệ thống
-#### 5.1. Lệnh Giọng Nói Hỗ Trợ
+## 4. Tính năng hệ thống
+#### 4.1. Lệnh Giọng Nói Hỗ Trợ
 
 Nhấn và **giữ nút "Giữ để nói lệnh"** trên dashboard, nói rõ một trong các lệnh sau:
 
@@ -161,7 +148,7 @@ Nhấn và **giữ nút "Giữ để nói lệnh"** trên dashboard, nói rõ m�
 
 ---
 
-#### 5.2. API ESP32 (HTTP)
+#### 4.2. API ESP32 (HTTP)
 
 ESP32 khởi chạy WebServer trên cổng **80**, hỗ trợ các endpoint:
 
@@ -193,7 +180,7 @@ ESP32 khởi chạy WebServer trên cổng **80**, hỗ trợ các endpoint:
 
 ---
 
-#### 5.3. Cảnh Báo Tự Động
+#### 4.3. Cảnh Báo Tự Động
 
 Server tự động giám sát cảm biến và phát cảnh báo **TTS (Text-to-Speech)** khi:
 
@@ -204,7 +191,7 @@ Server tự động giám sát cảm biến và phát cảnh báo **TTS (Text-to
 
 ---
 
-#### 5.4. Dashboard Web
+#### 4.4. Dashboard Web
 
 Truy cập **http://localhost:5000** để:
 
@@ -219,7 +206,7 @@ Truy cập **http://localhost:5000** để:
 
 ---
 
-## 6. Công Nghệ Sử Dụng
+## 5. Công Nghệ Sử Dụng
 
 | Thành phần     | Công nghệ                              |
 |----------------|----------------------------------------|
@@ -233,7 +220,7 @@ Truy cập **http://localhost:5000** để:
 
 ---
 
-## 7. Xử Lý Lỗi Thường Gặp
+## 6. Xử Lý Lỗi Thường Gặp
 
 **ESP32 không kết nối WiFi:**
 - Kiểm tra `ssid` / `password` trong `main.cpp`
